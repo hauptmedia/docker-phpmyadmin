@@ -23,6 +23,13 @@ RUN	rm -rf /var/www && \
 	a2enmod php5 && \
 	a2enmod rewrite
 
+# redirect apache logs to stderr / stdout
+RUN	find /etc/apache2 -type f -exec sed -ri ' \
+	s!^(\s*CustomLog)\s+\S+!\1 /proc/self/fd/1!g; \
+        s!^(\s*ErrorLog)\s+\S+!\1 /proc/self/fd/2!g; \
+	' '{}' ';'
+
+
 COPY	docker-entrypoint.sh	/usr/local/sbin/docker-entrypoint.sh
 
 EXPOSE 80
