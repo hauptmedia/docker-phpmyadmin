@@ -28,16 +28,18 @@ EOF
 
 dpkg-reconfigure phpmyadmin
 
+echo "<?php" >/etc/phpmyadmin/conf.d/pmadb.php
+
 if [ -n "$PMA_DB" ]; then
-	echo "\$cfg['Servers'][\$i]['pmadb'] = '"${PMA_DB}"';" >>/etc/phpmyadmin/conf.d/pmadb.php
+	echo "\$cfg['Servers'][1]['pmadb'] = '"${PMA_DB}"';" >>/etc/phpmyadmin/conf.d/pmadb.php
 fi
 
 if [ -n "$PMA_CONTROL_USER" ]; then
-	echo "\$cfg['Servers'][\$i]['controluser'] = '"${PMA_CONTROL_USER}"';" >>/etc/phpmyadmin/conf.d/pmadb.php
+	echo "\$cfg['Servers'][1]['controluser'] = '"${PMA_CONTROL_USER}"';" >>/etc/phpmyadmin/conf.d/pmadb.php
 fi
 
 if [ -n "$PMA_CONTROL_PASSWORD" ]; then
-	echo "\$cfg['Servers'][\$i]['controlpass'] = '"${PMA_CONTROL_PASSWORD}"';" >>/etc/phpmyadmin/conf.d/pmadb.php
+	echo "\$cfg['Servers'][1]['controlpass'] = '"${PMA_CONTROL_PASSWORD}"';" >>/etc/phpmyadmin/conf.d/pmadb.php
 fi
 
 
