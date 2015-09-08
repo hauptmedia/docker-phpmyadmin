@@ -4,6 +4,8 @@ Use the following environment variables to configure phpMyAdmin:
 
 `BLOWFISH_SECRET` The cookie auth_type uses AES algorithm to encrypt the password. If you are using the cookie auth_type, enter here a random passphrase of your choice. It will be used internally by the AES algorithm: you won't be prompted for this passphrase. There is no maximum length for this secret.
 
+`PMA_ABSOLUTE_URI` Sets here the complete URL (with full path) to your phpMyAdmin installation's directory
+
 `SERVER_$i_HOST` The hostname or IP address of your $i-th MySQL-server
 
 `SERVER_$i_PORT` The port-number of your $i-th MySQL-server. Default is 3306
