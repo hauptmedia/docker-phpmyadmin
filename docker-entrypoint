@@ -7,7 +7,7 @@ if(getenv("BLOWFISH_SECRET") != "") {
 	$cfgFileContent .= sprintf("\$cfg['blowfish_secret'] = \"%s\";\n", getenv("BLOWFISH_SECRET"));
 }
 
-$serverConfOptions = ['host', 'port', 'pmadb', 'controlhost', 'controlport', 'controluser', 'controlpass'];
+$serverConfOptions = ['host', 'port', 'auth_type', 'pmadb', 'controlhost', 'controlport', 'controluser', 'controlpass'];
 
 
 for($i=1; $i<=10; $i++) {
