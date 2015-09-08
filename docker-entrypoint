@@ -3,12 +3,18 @@
 
 $cfgFileContent = "<?php\n";
 
-if(getenv("BLOWFISH_SECRET") != "") {
-	$cfgFileContent .= sprintf("\$cfg['blowfish_secret'] = \"%s\";\n", getenv("BLOWFISH_SECRET"));
+$configMappings = [
+	'PMA_ABSOLUTE_URI' => 'PmaAbsoluteUri',
+	'BLOWFISH_SECRET'  => 'blowfish_secret'
+];
+
+foreach($configMappings as $env => $mapping) {
+	if(getenv($env) != "") {
+		$cfgFileContent .= sprintf("\$cfg['%s'] = \"%s\";\n", $mapping, getenv($env));
+	}
 }
 
 $serverConfOptions = ['host', 'port', 'auth_type', 'pmadb', 'controlhost', 'controlport', 'controluser', 'controlpass'];
-
 
 for($i=1; $i<=10; $i++) {
 	foreach($serverConfOptions as $option) {
