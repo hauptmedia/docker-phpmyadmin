@@ -21,4 +21,21 @@ Use the following environment variables to configure phpMyAdmin:
 `SERVER_$i_CONTROLPASS` Password for Control User 
 
 
+## Example
+
+```bash
+docker run \
+    -d \
+    -e BLOWFISH_SECRET=changeThisToASecretString \
+    -e PMA_ABSOLUTE_URI=https://pma.yourdomain.com \
+    -e SERVER_1_HOST=mysql-server1.yourdomain.com \
+    -e SERVER_1_PMADB=phpmyadmin \
+    -e SERVER_1_CONTROLUSER=pma \
+    -e SERVER_1_CONTROLPASS=verySecretPassword \
+    -e SERVER_2_HOST=mysql-server2.yourdomain.com \
+    -e SERVER_3_HOST=mysql-server3.otherdomain.com \
+    -e SERVER_3_PORT=3307 \
+    -p 127.0.0.1:999:80 \
+    hauptmedia/phpmyadmin
+```
 
