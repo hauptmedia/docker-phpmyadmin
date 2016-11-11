@@ -23,7 +23,7 @@ RUN	find /etc/apache2 -type f -exec sed -ri ' \
 	' '{}' ';'
 
 RUN	sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 2G/" /etc/php5/apache2/php.ini && \		
-	sed -i "s/post_max_size = 8M/post_max_size = 8M/" /etc/php5/apache2/php.ini
+	sed -i "s/post_max_size = 8M/post_max_size = 8G/" /etc/php5/apache2/php.ini
 
 RUN 	curl -SL https://files.phpmyadmin.net/phpMyAdmin/${PHPMYADMIN_VERSION}/phpMyAdmin-${PHPMYADMIN_VERSION}-english.tar.gz -o phpMyAdmin-${PHPMYADMIN_VERSION}-english.tar.gz && \
 	tar -xzf phpMyAdmin-${PHPMYADMIN_VERSION}-english.tar.gz -C /var/www --strip-components=1 && \
