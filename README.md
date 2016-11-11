@@ -6,6 +6,8 @@ Use the following environment variables to configure phpMyAdmin:
 
 `PMA_ABSOLUTE_URI` Sets here the complete URL (with full path) to your phpMyAdmin installation's directory
 
+`ALLOW_THIRD_PARTY_FRAMING` Setting this to true allows phpMyAdmin to be included inside a frame, and is a potential security hole allowing cross-frame scripting attacks or clickjacking.
+
 `SERVER_$i_HOST` The hostname or IP address of your $i-th MySQL-server
 
 `SERVER_$i_PORT` The port-number of your $i-th MySQL-server. Default is 3306
