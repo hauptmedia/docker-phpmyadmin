@@ -1,8 +1,7 @@
 FROM debian:jessie
 
 ENV	DEBIAN_FRONTEND noninteractive
-ENV	PHPMYADMIN_VERSION 4.4.14.1
-ENV	PHPMYADMIN_MD5 82194840b02101a2ae541ab81998b87c
+ENV	PHPMYADMIN_VERSION 4.6.4
 
 # install required packges
 RUN	apt-get update -qq && \
@@ -24,7 +23,6 @@ RUN	find /etc/apache2 -type f -exec sed -ri ' \
 	' '{}' ';'
 
 RUN 	curl -SL https://files.phpmyadmin.net/phpMyAdmin/${PHPMYADMIN_VERSION}/phpMyAdmin-${PHPMYADMIN_VERSION}-english.tar.gz -o phpMyAdmin-${PHPMYADMIN_VERSION}-english.tar.gz && \
-	echo "${PHPMYADMIN_MD5}  phpMyAdmin-${PHPMYADMIN_VERSION}-english.tar.gz" | md5sum -c && \
 	tar -xzf phpMyAdmin-${PHPMYADMIN_VERSION}-english.tar.gz -C /var/www --strip-components=1 && \
 	rm phpMyAdmin-${PHPMYADMIN_VERSION}-english.tar.gz
 
