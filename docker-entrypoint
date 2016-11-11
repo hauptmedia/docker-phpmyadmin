@@ -5,12 +5,18 @@ $cfgFileContent = "<?php\n";
 
 $configMappings = [
 	'PMA_ABSOLUTE_URI' => 'PmaAbsoluteUri',
-	'BLOWFISH_SECRET'  => 'blowfish_secret'
+	'BLOWFISH_SECRET'  => 'blowfish_secret',
+	'ALLOW_THIRD_PARTY_FRAMING' => 'AllowThirdPartyFraming'
 ];
 
 foreach($configMappings as $env => $mapping) {
-	if(getenv($env) != "") {
-		$cfgFileContent .= sprintf("\$cfg['%s'] = \"%s\";\n", $mapping, getenv($env));
+	$envValue = getenv($env);
+
+	if($envValue != "") {
+		$cfgFileContent .= sprintf("\$cfg['%s'] = %s;\n", 
+			$mapping, 
+			($envValue == "true") ? 'true' : '"' . $envValue . '"'
+		);
 	}
 }
 
