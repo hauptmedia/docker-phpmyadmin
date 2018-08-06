@@ -5,7 +5,7 @@ ENV	PHPMYADMIN_VERSION 4.8.2
 
 # install required packges
 RUN	apt-get update -qq && \
-	apt-get install -y curl apache2 php7.0 php7.0-cli php7.0-mysql php7.0-curl mysql-client && \
+	apt-get install -y curl apache2 php7.0 php7.0-cli php7.0-mysql php7.0-curl php7.0-mbstring mysql-client && \
 	apt-get clean autoclean && \
 	apt-get autoremove --yes && \
 	rm -rf /var/lib/{apt,dpkg,cache,log}/
