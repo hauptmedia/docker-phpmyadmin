@@ -1,18 +1,17 @@
-FROM debian:jessie
+FROM debian:stretch
 
 ENV	DEBIAN_FRONTEND noninteractive
-ENV	PHPMYADMIN_VERSION 4.6.4
+ENV	PHPMYADMIN_VERSION 4.8.2
 
 # install required packges
 RUN	apt-get update -qq && \
-	apt-get install -y curl apache2 php5 php5-cli php5-mysql php5-curl mysql-client && \
+	apt-get install -y curl apache2 php7.0 php7.0-cli php7.0-mysql php7.0-curl mysql-client && \
 	apt-get clean autoclean && \
 	apt-get autoremove --yes && \
 	rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 # configure apache
 RUN	rm -rf /var/www/* && \
-	a2enmod php5 && \
 	a2enmod rewrite
 
 # redirect apache logs to stderr / stdout
