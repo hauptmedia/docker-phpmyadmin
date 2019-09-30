@@ -1,7 +1,7 @@
 FROM debian:stretch
 
 ENV	DEBIAN_FRONTEND noninteractive
-ENV	PHPMYADMIN_VERSION 4.8.2
+ENV	PHPMYADMIN_VERSION 4.9.1
 
 # install required packges
 RUN	apt-get update -qq && \
